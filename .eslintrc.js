@@ -4,9 +4,9 @@ module.exports = {
     es6: true,
   },
   extends: [
+    'airbnb',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'airbnb',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
@@ -21,5 +21,7 @@ module.exports = {
     },
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    'react/jsx-filename-extension': 'off',
+  },
 };

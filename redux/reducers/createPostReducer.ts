@@ -1,4 +1,5 @@
 import { actionTypes } from '../actions/createPostActions';
+import { AnyAction } from 'redux';
 
 const initialState = {
   isLoading: false,
@@ -8,8 +9,7 @@ const initialState = {
 
 type PostState = typeof initialState;
 
-const postReducer = (state = initialState, action): PostState => {
-  console.log(action.type);
+const postReducer = (state = initialState, action: AnyAction): PostState => {
   switch (action.type) {
     case actionTypes.SEND_POST_REQUEST:
       return {

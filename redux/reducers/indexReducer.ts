@@ -1,4 +1,5 @@
 import { actionTypes } from '../actions/indexActions';
+import { AnyAction } from 'redux';
 
 const initialState = {
   postsList: [],
@@ -8,7 +9,7 @@ const initialState = {
 
 type IndexState = typeof initialState;
 
-const counterReducer = (state = initialState, action): IndexState => {
+const counterReducer = (state = initialState, action: AnyAction): IndexState => {
   switch (action.type) {
     case actionTypes.FETCH_POSTS_LIST_REQUEST:
       return {

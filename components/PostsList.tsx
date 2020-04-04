@@ -7,7 +7,7 @@ interface Props {
   posts: PostModel[];
 }
 
-const PostsList: React.FC<Props> = ({ posts }: Props) => {
+const PostsList: React.FC<Props> = ({ posts }) => {
   return (
     <List>
       {posts.map((post) => (

@@ -7,11 +7,15 @@ import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import { sendPost } from '../../redux/actions/createPostActions';
 import PostModel from '../../models/PostModel';
+import StateModel from '../../models/StateModel';
 
-interface Props {
-  sendPost: (post: PostModel) => Promise<void>;
+interface State {
   isSent: boolean;
   isLoading: boolean;
+}
+
+interface Props extends State {
+  sendPost: (post: PostModel) => Promise<void>;
 }
 
 const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading }) => {
@@ -82,9 +86,9 @@ const Button = styled.button`
   border: none;
   border-radius: 6px;
   font-weight: bold;
-  background-color: ${(props) => (props.disabled ? 'grey' : 'lightgreen')};
+  background-color: ${(props): string => (props.disabled ? 'grey' : 'lightgreen')};
   cursor: pointer;
-  color: ${(props) => (props.disabled ? 'black' : 'green')};
+  color: ${(props): string => (props.disabled ? 'black' : 'green')};
 `;
 
 const Banner = styled.p`
@@ -97,7 +101,7 @@ const Banner = styled.p`
   color: green;
 `;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StateModel): State => ({
   isSent: state.createPost.isSent,
   isLoading: state.createPost.isLoading,
 });

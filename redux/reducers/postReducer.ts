@@ -1,4 +1,5 @@
 import { actionTypes } from '../actions/postActions';
+import { AnyAction } from 'redux';
 
 const initialState = {
   post: null,
@@ -8,7 +9,7 @@ const initialState = {
 
 type PostState = typeof initialState;
 
-const postReducer = (state = initialState, action): PostState => {
+const postReducer = (state = initialState, action: AnyAction): PostState => {
   switch (action.type) {
     case actionTypes.FETCH_POST_REQUEST:
       return {

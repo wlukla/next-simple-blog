@@ -7,7 +7,7 @@ interface Props {
   title: string;
 }
 
-const PostLink: React.FC<Props> = ({ id, title }: Props) => (
+const PostLink: React.FC<Props> = ({ id, title }) => (
   <Item>
     <Link href="posts/`[id]" as={`${id}`}>
       <Card>Title: {title}</Card>

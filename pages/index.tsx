@@ -1,15 +1,13 @@
 import React from 'react';
-import { NextPage } from 'next';
-
-import styled from 'styled-components';
-
-import PostModel from '../models/PostModel';
+import { NextPage, NextPageContext } from 'next';
 
 import Layout from '../components/Layout';
 import PostsList from '../components/PostsList';
-import { NextPageContext } from 'next';
 
 import { fetchPosts } from '../redux/actions/indexActions';
+
+import PostModel from '../models/PostModel';
+import { Title } from '../styled-components';
 
 interface Props {
   postsList: PostModel[];
@@ -23,10 +21,6 @@ const Index: NextPage<Props> = ({ postsList }) => {
     </Layout>
   );
 };
-
-const Title = styled.h2`
-  margin: 15px 25px;
-`;
 
 Index.getInitialProps = async ({ store }: NextPageContext): Promise<{ postsList: PostModel[] }> => {
   const { dispatch } = store;

@@ -1,8 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import PostLink from './PostLink';
+import { List } from '../styled-components';
 
 import PostModel from '../models/PostModel';
+
 interface Props {
   posts: PostModel[];
 }
@@ -16,12 +18,5 @@ const PostsList: React.FC<Props> = ({ posts }) => {
     </List>
   );
 };
-
-const List = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 export default PostsList;

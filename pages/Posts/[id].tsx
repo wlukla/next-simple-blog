@@ -1,10 +1,10 @@
 import React from 'react';
 import { NextPage } from 'next';
-import styled from 'styled-components';
-
-import PostModel from '../../models/PostModel';
 
 import Layout from '../../components/Layout';
+import { ArticleTitle, Article, ArticleBody } from '../../styled-components';
+
+import PostModel from '../../models/PostModel';
 
 import { fetchPostByID } from '../../redux/actions/postActions';
 
@@ -31,19 +31,5 @@ Post.getInitialProps = async ({ query, store }): Promise<{ post: PostModel }> =>
 
   return { post };
 };
-
-const Article = styled.article`
-  padding: 20px;
-`;
-
-const ArticleTitle = styled.h2`
-  margin: 15px 25px 0 0;
-`;
-
-const ArticleBody = styled.p`
-  margin-top: 40px;
-  padding-left: 20px;
-  border-left: 4px solid #1f1f1f;
-`;
 
 export default Post;

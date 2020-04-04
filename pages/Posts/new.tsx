@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
-import { NextPage } from 'next';
 import { connect } from 'react-redux';
+import { NextPage } from 'next';
 import { Dispatch } from 'redux';
-import styled from 'styled-components';
 
 import Layout from '../../components/Layout';
-import { sendPost } from '../../redux/actions/createPostActions';
+import { Title, Form, Label, Input, Textarea, SubmitButton, Banner } from '../../styled-components';
+
 import PostModel from '../../models/PostModel';
 import StateModel from '../../models/StateModel';
+
+import { sendPost } from '../../redux/actions/createPostActions';
 
 interface State {
   isSent: boolean;
@@ -43,63 +45,14 @@ const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading }) => {
           Contents:
           <Textarea name="body" ref={contentRef} />
         </Label>
-        <Button type="submit" disabled={isLoading}>
+        <SubmitButton type="submit" disabled={isLoading}>
           Post!
-        </Button>
+        </SubmitButton>
       </Form>
       {isSent && <Banner>Your Post was created!</Banner>}
     </Layout>
   );
 };
-
-const Title = styled.h2`
-  margin: 15px 25px;
-`;
-
-const Form = styled.form`
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Textarea = styled.textarea`
-  width: 100%;
-  height: 50vh;
-  font-size: 1rem;
-  resize: none;
-`;
-
-const Label = styled.label`
-  margin-top: 10px;
-  font-size: 1.5rem;
-`;
-
-const Input = styled.input`
-  width: 50%;
-`;
-
-const Button = styled.button`
-  align-self: flex-end;
-  width: 150px;
-  padding: 8px 40px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  background-color: ${(props): string => (props.disabled ? 'grey' : 'lightgreen')};
-  cursor: pointer;
-  color: ${(props): string => (props.disabled ? 'black' : 'green')};
-`;
-
-const Banner = styled.p`
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: 20px;
-  padding: 10px 20px;
-  background-color: lightgreen;
-  color: green;
-`;
 
 const mapStateToProps = (state: StateModel): State => ({
   isSent: state.createPost.isSent,

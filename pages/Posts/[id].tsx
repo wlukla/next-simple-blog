@@ -17,9 +17,9 @@ const Post: NextPage<Props> = ({ post }: Props) => {
   return (
     <Layout>
       <Article>
-        <Title>{post.title}</Title>
+        <ArticleTitle>{post.title}</ArticleTitle>
         <small>id: {router.query.id}</small>
-        <p>{post.body}</p>
+        <ArticleBody>{post.body}</ArticleBody>
       </Article>
     </Layout>
   );
@@ -37,9 +37,14 @@ const Article = styled.article`
   padding: 20px;
 `;
 
-const Title = styled.h2`
+const ArticleTitle = styled.h2`
   margin: 15px 25px 0 0;
-  float: center;
+`;
+
+const ArticleBody = styled.p`
+  margin-top: 40px;
+  padding-left: 20px;
+  border-left: 4px solid #1f1f1f;
 `;
 
 export default Post;

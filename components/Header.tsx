@@ -34,7 +34,7 @@ const Logo = styled.a`
 
 const Button = styled.button`
   background-color: lightgreen;
-  padding: 8px 6px;
+  padding: 8px 10px;
   border: none;
   border-radius: 6px;
   font-weight: bold;

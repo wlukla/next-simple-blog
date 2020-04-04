@@ -6,7 +6,9 @@ const initialState = {
   isError: false,
 };
 
-const counterReducer = (state = initialState, action) => {
+type IndexState = typeof initialState;
+
+const counterReducer = (state = initialState, action): IndexState => {
   console.log(action.type);
   switch (action.type) {
     case actionTypes.FETCH_POSTS_LIST_REQUEST:

@@ -13,4 +13,8 @@ export default class PostsService {
     const { data } = await axios.get(`${this.apiBase}/posts/${id}`);
     return data;
   }
+
+  sendPost(post: PostModel): void {
+    axios.post(`${this.apiBase}/posts`, post);
+  }
 }

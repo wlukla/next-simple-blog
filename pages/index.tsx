@@ -28,7 +28,7 @@ const Title = styled.h2`
   margin: 15px 25px;
 `;
 
-Index.getInitialProps = async ({ store }: NextPageContext): Promise<any> => {
+Index.getInitialProps = async ({ store }: NextPageContext): Promise<{ postsList: PostModel[] }> => {
   const { dispatch } = store;
   await fetchPosts(dispatch);
   const { postsList } = store.getState().index;

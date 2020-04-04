@@ -24,7 +24,7 @@ const Post: NextPage<Props> = ({ post }) => {
   );
 };
 
-Post.getInitialProps = async ({ query, store }) => {
+Post.getInitialProps = async ({ query, store }): Promise<{ post: PostModel }> => {
   const { dispatch } = store;
   await fetchPostByID(query.id, dispatch);
   const { post } = store.getState().post;

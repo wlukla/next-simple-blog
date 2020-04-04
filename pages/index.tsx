@@ -1,34 +1,35 @@
 import React from 'react';
 import { NextPage } from 'next';
 import axios from 'axios';
+import styled from 'styled-components';
+
+import PostModel from '../models/PostModel';
 
 import Layout from '../components/Layout';
 import PostsList from '../components/PostsList';
 
-interface IndexProps {
-  postsLinks: string[];
+interface Props {
+  posts: PostModel[];
 }
 
-const Index: NextPage<IndexProps> = ({ postsLinks }: IndexProps) => {
+const Index: NextPage<Props> = ({ posts }) => {
   return (
     <Layout>
-      <h2>Latest Posts:</h2>
-      <PostsList postsLinks={postsLinks} />
+      <Title>Latest Posts:</Title>
+      <PostsList posts={posts} />
     </Layout>
   );
 };
 
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
+const Title = styled.h2`
+  margin: 15px 25px;
+`;
 
 Index.getInitialProps = async () => {
   const { data } = await axios.get('https://simple-blog-api.crew.red/posts');
 
   return {
-    postsLinks: data.map((entry: Post) => entry.id.toString()),
+    posts: data,
   };
 };
 

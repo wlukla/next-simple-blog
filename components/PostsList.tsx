@@ -1,18 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
 import PostLink from './PostLink';
 
+import PostModel from '../models/PostModel';
 interface Props {
-  postsLinks: string[];
+  posts: PostModel[];
 }
 
-const PostsList: React.FC<Props> = ({ postsLinks }: Props) => {
+const PostsList: React.FC<Props> = ({ posts }: Props) => {
   return (
-    <ul>
-      {postsLinks.map((postLink) => (
-        <PostLink id={`/posts/${postLink}`} key={postLink} />
+    <List>
+      {posts.map((post) => (
+        <PostLink id={`/posts/${post.id}`} title={post.title} key={post.id} />
       ))}
-    </ul>
+    </List>
   );
 };
+
+const List = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default PostsList;

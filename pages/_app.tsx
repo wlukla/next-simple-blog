@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Noto Sans', sans-serif;
   }
+
+  a {
+    word-break: break-all;
+  }
 `;
 
 export default class MyApp extends App {

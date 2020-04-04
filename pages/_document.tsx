@@ -28,18 +28,4 @@ export default class MyDocument extends Document {
       sheet.seal();
     }
   }
-
-  render() {
-    return (
-      <html>
-        <Head>
-          <title>My page</title>
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    );
-  }
 }

@@ -18,6 +18,7 @@ const Layout = ({ children }: Props): JSX.Element => {
 const Wrapper = styled.section`
   width: 80%;
   margin: 0 auto;
+  border: 1px solid black;
 `;
 
 export default Layout;

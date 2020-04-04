@@ -1,39 +1,38 @@
 import React from 'react';
 import { NextPage } from 'next';
-import axios from 'axios';
 import styled from 'styled-components';
 
 import PostModel from '../../models/PostModel';
 
 import Layout from '../../components/Layout';
-import { useRouter } from 'next/router';
+
+import { fetchPostByID } from '../../redux/actions/postActions';
 
 interface Props {
-  post: PostModel;
+  post?: PostModel;
 }
 
-const Post: NextPage<Props> = ({ post }: Props) => {
-  const router = useRouter();
+const Post: NextPage<Props> = ({ post }) => {
   return (
     <Layout>
       <Article>
         <ArticleTitle>{post.title}</ArticleTitle>
-        <small>id: {router.query.id}</small>
+        <small>id: {post.id}</small>
         <ArticleBody>{post.body}</ArticleBody>
       </Article>
     </Layout>
   );
 };
 
-Post.getInitialProps = async (context) => {
-  const { id } = context.query;
-  const { data } = await axios.get(`https://simple-blog-api.crew.red/posts/${id}`);
+Post.getInitialProps = async ({ query, store }) => {
+  const { dispatch } = store;
+  await fetchPostByID(query.id, dispatch);
+  const { post } = store.getState().post;
 
-  return { post: data };
+  return { post };
 };
 
 const Article = styled.article`
-  border: 1px solid grey;
   padding: 20px;
 `;
 

@@ -31,6 +31,7 @@ export const Button = styled.button`
 export const Wrapper = styled.section`
   width: 80%;
   margin: 0 auto;
+  padding-top: 15px;
   border: 1px solid black;
   border-top: none;
 `;
@@ -57,7 +58,7 @@ export const List = styled.ul`
 `;
 
 export const Title = styled.h2`
-  margin: 15px 25px;
+  margin: 0 25px 15px;
 `;
 
 export const Article = styled.article`

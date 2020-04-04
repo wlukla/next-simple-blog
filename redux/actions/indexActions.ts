@@ -26,7 +26,7 @@ const fetchPosts = async (dispatch: Dispatch): Promise<void> => {
   const postsService = new PostsService();
   try {
     dispatch(postsRequested());
-    const postsList = await postsService.getAllPosts();
+    const postsList = await (await postsService.getAllPosts()).reverse();
     dispatch(postsLoaded(postsList));
   } catch (err) {
     dispatch(postsError(err));

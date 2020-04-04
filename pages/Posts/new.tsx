@@ -10,11 +10,14 @@ import PostModel from '../../models/PostModel';
 
 interface Props {
   sendPost: (post: PostModel) => Promise<void>;
+  isSent: boolean;
+  isLoading: boolean;
 }
 
-const CreatePost: NextPage<Props> = ({ sendPost }) => {
+const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading }) => {
   const titleRef = useRef(null);
   const contentRef = useRef(null);
+
   return (
     <Layout>
       <Title>CreatePost</Title>
@@ -23,6 +26,8 @@ const CreatePost: NextPage<Props> = ({ sendPost }) => {
           e.preventDefault();
           const title = titleRef.current.value;
           const body = contentRef.current.value;
+          contentRef.current.value = '';
+          titleRef.current.value = '';
           sendPost({ title, body });
         }}
       >
@@ -34,8 +39,11 @@ const CreatePost: NextPage<Props> = ({ sendPost }) => {
           Contents:
           <Textarea name="body" ref={contentRef} />
         </Label>
-        <Button type="submit">Post!</Button>
+        <Button type="submit" disabled={isLoading}>
+          Post!
+        </Button>
       </Form>
+      {isSent && <Banner>Your Post was created!</Banner>}
     </Layout>
   );
 };
@@ -74,13 +82,28 @@ const Button = styled.button`
   border: none;
   border-radius: 6px;
   font-weight: bold;
-  color: darkgreen;
+  background-color: ${(props) => (props.disabled ? 'grey' : 'lightgreen')};
   cursor: pointer;
-  background-color: lightgreen;
+  color: ${(props) => (props.disabled ? 'black' : 'green')};
 `;
+
+const Banner = styled.p`
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: lightgreen;
+  color: green;
+`;
+
+const mapStateToProps = (state) => ({
+  isSent: state.createPost.isSent,
+  isLoading: state.createPost.isLoading,
+});
 
 const mapDispatchToProps = (dispatch: Dispatch): { sendPost: (post: PostModel) => Promise<void> } => ({
   sendPost: sendPost(dispatch),
 });
 
-export default connect(null, mapDispatchToProps)(CreatePost);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);

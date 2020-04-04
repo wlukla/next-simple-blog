@@ -25,7 +25,7 @@ const postReducer = (state = initialState, action): PostState => {
     case actionTypes.FETCH_POST_FAILURE:
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
         isError: true,
       };
     default:

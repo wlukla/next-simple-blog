@@ -9,7 +9,6 @@ const initialState = {
 type IndexState = typeof initialState;
 
 const counterReducer = (state = initialState, action): IndexState => {
-  console.log(action.type);
   switch (action.type) {
     case actionTypes.FETCH_POSTS_LIST_REQUEST:
       return {
@@ -26,7 +25,7 @@ const counterReducer = (state = initialState, action): IndexState => {
     case actionTypes.FETCH_POSTS_LIST_FAILURE:
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
         isError: true,
       };
     default:

@@ -1,8 +1,9 @@
 import { actionTypes } from '../actions/createPostActions';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isError: false,
+  isSent: false,
 };
 
 type PostState = typeof initialState;
@@ -20,11 +21,12 @@ const postReducer = (state = initialState, action): PostState => {
       return {
         ...state,
         isLoading: false,
+        isSent: true,
       };
     case actionTypes.SEND_POST_FAILURE:
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
         isError: true,
       };
     default:

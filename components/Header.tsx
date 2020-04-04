@@ -15,7 +15,10 @@ const NewHeader: React.FC = () => (
 );
 
 const Header = styled.header`
-  width: 100%;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  top: -1px;
   box-sizing: border-box;
   padding: 1rem 4rem;
   display: flex;

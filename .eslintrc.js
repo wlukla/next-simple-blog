@@ -1,38 +1,13 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-  },
+  parser: '@typescript-eslint/parser',
   extends: [
-    'airbnb',
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
+    'react-app',
     'plugin:prettier/recommended',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react'],
   rules: {
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -41,12 +16,5 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
   },
 };

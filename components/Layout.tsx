@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import styled from 'styled-components';
 
 interface Props {
   children: React.ReactNode;
@@ -7,11 +8,16 @@ interface Props {
 
 const Layout = ({ children }: Props): JSX.Element => {
   return (
-    <div>
+    <Wrapper>
       <Header />
       {children}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  width: 80%;
+  margin: 0 auto;
+`;
 
 export default Layout;

@@ -12,7 +12,7 @@ interface IndexProps {
 const Index: NextPage<IndexProps> = ({ postsLinks }: IndexProps) => {
   return (
     <Layout>
-      <h1>Home</h1>
+      <h2>Latest Posts:</h2>
       <PostsList postsLinks={postsLinks} />
     </Layout>
   );

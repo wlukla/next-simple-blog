@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import Head from 'next/head';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import { Normalize } from 'styled-normalize';
@@ -49,9 +48,6 @@ class MyApp extends React.Component<any> {
     const { Component, pageProps, store } = this.props;
     return (
       <Provider store={store}>
-        <Head>
-          <link rel="preload" href="/fonts/noto-sans-v9-latin-regular.woff2" as="font" />
-        </Head>
         <Normalize />
         <GlobalFonts />
         <GlobalStyle />

@@ -62,7 +62,7 @@ export const Title = styled.h2`
 `;
 
 export const Article = styled.article`
-  padding: 20px;
+  padding: 10px 20px 70px;
 `;
 
 export const ArticleTitle = styled.h2`

@@ -9,6 +9,10 @@ export const Header = styled.header`
   align-items: center;
   background-color: #1f1f1f;
   color: #ffffff;
+
+  @media (max-width: 500px) {
+    padding: 1rem;
+  }
 `;
 
 export const Logo = styled.a`
@@ -16,6 +20,14 @@ export const Logo = styled.a`
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -34,6 +46,10 @@ export const Wrapper = styled.section`
   padding-top: 15px;
   border: 1px solid black;
   border-top: none;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const Item = styled.li`
@@ -77,6 +93,11 @@ export const ArticleBody = styled.pre`
   width: 80%;
   border-left: 4px solid #1f1f1f;
   white-space: pre-wrap;
+
+  @media (max-width: 700px) {
+    width: 95%;
+    line-height: 1rem;
+  }
 `;
 
 export const Form = styled.form`

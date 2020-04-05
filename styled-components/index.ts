@@ -96,7 +96,7 @@ export const ArticleBody = styled.pre`
 
   @media (max-width: 700px) {
     width: 95%;
-    line-height: 1rem;
+    line-height: 1.2rem;
   }
 `;
 
@@ -138,8 +138,8 @@ export const SubmitButton = styled.button`
 export const SuccessBanner = styled.p`
   display: block;
   position: absolute;
-  bottom: 0;
-  right: 20px;
+  top: 70px;
+  left: 0;
   padding: 10px 20px;
   background-color: lightgreen;
   color: green;
@@ -148,8 +148,8 @@ export const SuccessBanner = styled.p`
 export const FailureBanner = styled.p`
   display: block;
   position: fixed;
-  bottom: 0;
-  right: 20px;
+  top: 70px;
+  left: 0;
   padding: 10px 20px;
   background-color: darksalmon;
   color: red;

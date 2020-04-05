@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
@@ -35,27 +35,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-class MyApp extends React.Component<any> {
-  static async getInitialProps({ Component, ctx }) {
-    return {
-      pageProps: {
-        ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
-      },
-    };
-  }
+const MyApp = (props: { Component: any; pageProps: any; store: any }) => {
+  const { Component, pageProps, store } = props;
+  return (
+    <Provider store={store}>
+      <Normalize />
+      <GlobalFonts />
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </Provider>
+  );
+};
 
-  render() {
-    const { Component, pageProps, store } = this.props;
-    return (
-      <Provider store={store}>
-        <Normalize />
-        <GlobalFonts />
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </Provider>
-    );
-  }
-}
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  return {
+    pageProps: {
+      ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+    },
+  };
+};
 
 const makeStore = () => store;
 

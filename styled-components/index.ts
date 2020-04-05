@@ -38,7 +38,7 @@ export const Wrapper = styled.section`
 
 export const Item = styled.li`
   margin: 10px;
-  width: 50%;
+  width: 80%;
 `;
 
 export const Card = styled.a`
@@ -46,7 +46,6 @@ export const Card = styled.a`
   padding: 10px 30px;
   min-height: 30px;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.75);
-  font-weight: bold;
   cursor: pointer;
 `;
 
@@ -62,6 +61,8 @@ export const Title = styled.h2`
 `;
 
 export const Article = styled.article`
+  display: flex;
+  flex-direction: column;
   padding: 10px 20px 70px;
 `;
 
@@ -69,10 +70,13 @@ export const ArticleTitle = styled.h2`
   margin: 15px 25px 0 0;
 `;
 
-export const ArticleBody = styled.p`
+export const ArticleBody = styled.pre`
+  align-self: center;
   margin-top: 40px;
   padding-left: 20px;
+  width: 80%;
   border-left: 4px solid #1f1f1f;
+  white-space: pre-wrap;
 `;
 
 export const Form = styled.form`
@@ -110,7 +114,7 @@ export const SubmitButton = styled.button`
   color: ${(props): string => (props.disabled ? 'black' : 'green')};
 `;
 
-export const Banner = styled.p`
+export const SuccessBanner = styled.p`
   display: block;
   position: absolute;
   bottom: 0;
@@ -118,4 +122,14 @@ export const Banner = styled.p`
   padding: 10px 20px;
   background-color: lightgreen;
   color: green;
+`;
+
+export const FailureBanner = styled.p`
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: darksalmon;
+  color: red;
 `;

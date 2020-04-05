@@ -4,7 +4,16 @@ import { NextPage } from 'next';
 import { Dispatch } from 'redux';
 
 import Layout from '../../components/Layout';
-import { Title, Form, Label, Input, Textarea, SubmitButton, Banner } from '../../styled-components';
+import {
+  Title,
+  Form,
+  Label,
+  Input,
+  Textarea,
+  SubmitButton,
+  SuccessBanner,
+  FailureBanner,
+} from '../../styled-components';
 
 import PostModel from '../../models/PostModel';
 import StateModel from '../../models/StateModel';
@@ -14,13 +23,14 @@ import { sendPost } from '../../redux/actions/createPostActions';
 interface State {
   isSent: boolean;
   isLoading: boolean;
+  isError: boolean;
 }
 
 interface Props extends State {
   sendPost: (post: PostModel) => Promise<void>;
 }
 
-const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading }) => {
+const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading, isError }) => {
   const titleRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -49,7 +59,8 @@ const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading }) => {
           Post!
         </SubmitButton>
       </Form>
-      {isSent && <Banner>Your Post was created!</Banner>}
+      {isSent && <SuccessBanner>Your Post was created!</SuccessBanner>}
+      {isError && <FailureBanner>Something went wrong!</FailureBanner>}
     </Layout>
   );
 };
@@ -57,6 +68,7 @@ const CreatePost: NextPage<Props> = ({ sendPost, isSent, isLoading }) => {
 const mapStateToProps = (state: StateModel): State => ({
   isSent: state.createPost.isSent,
   isLoading: state.createPost.isLoading,
+  isError: state.createPost.isError,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): { sendPost: (post: PostModel) => Promise<void> } => ({

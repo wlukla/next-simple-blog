@@ -15,7 +15,7 @@ const PostItem: React.FC<Props> = ({ post }) => {
       <Link href="posts/[id]" as={`posts/${id}`}>
         <Card>
           <h3>Title: {title}</h3>
-          <p>Contents: {`${body.slice(0, 20)}...`}</p>
+          <p>Preview: {body.length > 20 ? `${body.slice(0, 20)}...` : body}</p>
         </Card>
       </Link>
     </Item>

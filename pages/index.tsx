@@ -7,17 +7,26 @@ import PostsList from '../components/PostsList';
 import { fetchPosts } from '../redux/actions/indexActions';
 
 import PostModel from '../models/PostModel';
-import { Title } from '../styled-components';
+import { Title, FailureBanner } from '../styled-components';
+import StateModel from '../models/StateModel';
+import { connect } from 'react-redux';
 
 interface Props {
   postsList: PostModel[];
+  isError?: boolean;
 }
 
-const Index: NextPage<Props> = ({ postsList }) => {
+const Index: NextPage<Props> = ({ postsList, isError }) => {
   return (
     <Layout>
-      <Title>Latest Posts:</Title>
-      <PostsList posts={postsList} />
+      {isError ? (
+        <FailureBanner>Something went wrong!</FailureBanner>
+      ) : (
+        <>
+          <Title>Latest Posts:</Title>
+          <PostsList posts={postsList} />
+        </>
+      )}
     </Layout>
   );
 };
@@ -30,4 +39,8 @@ Index.getInitialProps = async ({ store }: NextPageContext): Promise<{ postsList:
   return { postsList };
 };
 
-export default Index;
+const mapStateToProps = (state: StateModel): { isError: boolean } => ({
+  isError: state.index.isError,
+});
+
+export default connect(mapStateToProps)(Index);

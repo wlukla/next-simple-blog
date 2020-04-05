@@ -7,9 +7,9 @@ const initialState = {
   isSent: false,
 };
 
-type PostState = typeof initialState;
+type createPostState = typeof initialState;
 
-const postReducer = (state = initialState, action: AnyAction): PostState => {
+const createPostReducer = (state = initialState, action: AnyAction): createPostState => {
   switch (action.type) {
     case actionTypes.SEND_POST_REQUEST:
       return {
@@ -38,4 +38,4 @@ const postReducer = (state = initialState, action: AnyAction): PostState => {
   }
 };
 
-export default postReducer;
+export default createPostReducer;

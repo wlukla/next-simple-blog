@@ -4,6 +4,7 @@ Deployed version: [zeit.co](https://next-simple-blog.wlukla.now.sh/)
 This is a blog made using:
 * TypeScript
 * Next.js
+* React
 * Redux
 * Styled Components
 * axios
